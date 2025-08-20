@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OnlyChairs — Premium Seating Content (Parody)</title>
+  <meta name="description" content="OnlyChairs is a playful parody of subscription platforms. Browse iconic chairs, support your favorite 'creators', and celebrate ergonomic excellence. No real payments — it's just for laughs." />
+  <meta property="og:title" content="OnlyChairs" />
+  <meta property="og:description" content="Premium seating content. Totally SFW. Totally a joke." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#7c3aed" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%AA%91%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root{
+      --bg:#0b1020; --card:#111735; --muted:#7b84a9; --text:#e9ecff; --brand:#8b5cf6; --brand-2:#06b6d4; --accent:#22c55e; --ring:rgba(139,92,246,.6);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0; padding:0; background:radial-gradient(1200px 600px at 100% -20%, rgba(139,92,246,.15), transparent),
+                          radial-gradient(800px 400px at -10% 110%, rgba(6,182,212,.10), transparent), var(--bg);
+      color:var(--text); font:16px/1.65 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Noto Sans", Arial, sans-serif;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1100px; margin:0 auto; padding:24px}
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(12px); background:rgba(11,16,32,.6); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex; align-items:center; gap:14px}
+    .logo{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px; font-size:20px}
+    .logo .badge{font-size:22px; filter: drop-shadow(0 2px 6px rgba(139,92,246,.5));}
+    .grow{flex:1}
+    .pill{padding:8px 14px; border-radius:999px; background:linear-gradient(135deg, rgba(139,92,246,.15), rgba(6,182,212,.12)); border:1px solid rgba(255,255,255,.08)}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:10px 14px; background:linear-gradient(135deg, var(--brand), var(--brand-2));
+      color:white; border:none; border-radius:14px; box-shadow:var(--shadow); cursor:pointer; transition:transform .06s ease, filter .2s ease}
+    .btn:hover{transform:translateY(-1px); filter:brightness(1.05)}
+    .btn.ghost{background:transparent; border:1px solid rgba(255,255,255,.12)}
+    .btn.small{padding:8px 10px; border-radius:12px; font-size:14px}
+    .btn.success{background:linear-gradient(135deg, var(--accent), #16a34a)}
+
+    .hero{display:grid; grid-template-columns:1.1fr .9fr; gap:26px; align-items:center; padding:40px 0}
+    .hero h1{font-size:42px; line-height:1.1; margin:0 0 10px}
+    .sub{color:var(--muted)}
+    .heroCard{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); padding:18px; border:1px solid rgba(255,255,255,.1); border-radius:20px}
+    .list{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .card{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:18px; overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column}
+    .thumb{aspect-ratio:16/10; background:linear-gradient(135deg, rgba(139,92,246,.25), rgba(6,182,212,.25)); display:grid; place-items:center; font-size:68px}
+    .card .body{padding:14px; display:flex; flex-direction:column; gap:10px}
+    .meta{display:flex; align-items:center; gap:8px; color:var(--muted); font-size:14px}
+    .tags{display:flex; flex-wrap:wrap; gap:6px}
+    .tag{font-size:12px; padding:4px 8px; border:1px solid rgba(255,255,255,.12); border-radius:999px; color:#cbd5ff}
+
+    .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
+    .post{border:1px solid rgba(255,255,255,.08); background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); aspect-ratio:1/1; border-radius:14px; display:grid; place-items:center; font-size:48px}
+
+    .section{margin:28px 0}
+    .section h2{margin:0 0 10px; font-size:22px}
+
+    footer{border-top:1px solid rgba(255,255,255,.08); padding:30px 0; color:var(--muted)}
+
+    .chipbar{display:flex; gap:8px; flex-wrap:wrap}
+
+    .searchRow{display:flex; gap:12px; align-items:center}
+    .search{flex:1; background:var(--card); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:10px 12px; color:var(--text)}
+
+    dialog{border:none; padding:0; border-radius:16px; overflow:hidden; background:var(--card); color:var(--text); border:1px solid rgba(255,255,255,.1)}
+    .modal{min-width:320px}
+    .modal header{position:static; background:transparent; border:none}
+    .modal .content{padding:18px}
+    .close{position:absolute; top:10px; right:10px; background:transparent; border:1px solid rgba(255,255,255,.2); border-radius:10px; color:var(--text); padding:6px 10px; cursor:pointer}
+
+    .empty{padding:18px; border:1px dashed rgba(255,255,255,.15); border-radius:14px; color:var(--muted); text-align:center}
+
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr;}
+      .list{grid-template-columns:repeat(2,1fr)}
+      .grid{grid-template-columns:repeat(3,1fr)}
+    }
+    @media (max-width: 640px){
+      .list{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .hero h1{font-size:32px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#" aria-label="OnlyChairs home">
+        <span class="badge">🪑</span>
+        <span>OnlyChairs</span>
+      </a>
+      <nav class="pill">
+        <a href="#discover" style="margin-right:10px">Discover</a>
+        <a href="#trending" style="margin-right:10px">Trending</a>
+        <a href="#about">About</a>
+      </nav>
+      <div class="grow"></div>
+      <button class="btn small ghost" id="toggleTheme" aria-pressed="false" title="Toggle theme">🌓 Theme</button>
+      <button class="btn small ghost" id="loginBtn">Log in</button>
+      <button class="btn small" id="signupBtn">Sign up</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1>Premium seating content. <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent">Totally a joke.</span></h1>
+        <p class="sub">Follow iconic chairs, unlock exclusive seat picks, and support your favorite ergonomics enthusiasts. No real payments here — subscriptions are simulated and saved to your browser only.</p>
+        <div style="display:flex; gap:10px; margin-top:16px">
+          <a class="btn" href="#discover">Start browsing</a>
+          <button class="btn ghost" id="becomeCreator">Become a creator</button>
+        </div>
+      </div>
+      <div class="heroCard">
+        <div class="chipbar" id="heroChips"></div>
+        <div class="section">
+          <h2 style="display:flex; align-items:center; gap:8px; margin:0 0 8px">🔥 Trending Posts</h2>
+          <div class="grid" id="trendingGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="discover" class="section">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:16px">
+        <h2>Discover creators</h2>
+        <div class="searchRow">
+          <input class="search" id="search" placeholder="Search chairs, styles, tags…" aria-label="Search" />
+          <select class="search" id="sort">
+            <option value="popular">Sort: Popular</option>
+            <option value="priceLow">Price: Low to High</option>
+            <option value="priceHigh">Price: High to Low</option>
+            <option value="new">Newest</option>
+          </select>
+        </div>
+      </div>
+      <div class="list" id="creatorGrid" aria-live="polite"></div>
+    </section>
+
+    <section id="trending" class="section">
+      <h2>Trending creators</h2>
+      <div class="list" id="trendingCreators"></div>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About OnlyChairs</h2>
+      <p class="sub">This is a parody site for fun and laughs. It mimics the vibe of subscription platforms without any real accounts, payments, or third‑party services. Everything is local to your browser. Enjoy responsibly; sit ergonomically.</p>
+      <div class="empty">Want to make it yours? Fork on GitHub and enable Pages. Instructions in the README below.</div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
+        <span>🪑 OnlyChairs</span><span>•</span>
+        <a href="#" id="exportBtn">Export your parody data</a>
+        <span>•</span>
+        <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+      <div style="margin-top:8px">Made with ❤️ for satire. No affiliation with any real platform.</div>
+    </div>
+  </footer>
+
+  <!-- Login / Signup Modal -->
+  <dialog id="authModal">
+    <div class="modal">
+      <button class="close" onclick="authModal.close()">✕</button>
+      <header class="container nav" style="padding:14px 18px 0">
+        <div class="logo"><span class="badge">🪑</span><span>OnlyChairs</span></div>
+      </header>
+      <div class="content">
+        <h3 style="margin:0 0 6px">Welcome back</h3>
+        <p class="sub" style="margin-top:0">Use any name or email — it's just stored locally.</p>
+        <form id="authForm" style="display:flex; flex-direction:column; gap:10px; margin-top:10px">
+          <input class="search" id="authName" placeholder="Display name" required />
+          <input class="search" id="authEmail" placeholder="Email (optional)" />
+          <button class="btn" type="submit">Continue</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Creator Modal -->
+  <dialog id="creatorModal">
+    <div class="modal">
+      <button class="close" onclick="creatorModal.close()">✕</button>
+      <div class="content" id="creatorContent"></div>
+    </div>
+  </dialog>
+
+  <script>
+    // --- Fake data -----------------------------------------------------------
+    const CREATORS = [
+      {id:'arco', name:'Arco', title:'Iconic bentwood vibes', price:4.99, tags:['modern','wood','minimal'], posts:8, rank:1, emoji:'🪑'},
+      {id:'eames', name:'Eames Lounge', title:'Premium leather lounging', price:9.99, tags:['leather','retro','premium'], posts:12, rank:2, emoji:'🛋️'},
+      {id:'poang', name:'Poäng', title:'Budget comfort champion', price:3.49, tags:['budget','ikea','comfy'], posts:6, rank:5, emoji:'🪑'},
+      {id:'gaming', name:'Gaming Throne', title:'RGB lumbar content', price:6.99, tags:['gaming','rgb','ergonomic'], posts:10, rank:3, emoji:'🎮'},
+      {id:'stoolio', name:'Stoolio', title:'Minimal seat, max style', price:2.49, tags:['stool','tiny','aesthetic'], posts:5, rank:8, emoji:'🧰'},
+      {id:'officepro', name:'OfficePro 9000', title:'The posture professor', price:5.99, tags:['office','mesh','task'], posts:9, rank:4, emoji:'🧑\u200d💻'},
+      {id:'beanbag', name:'Bean Bag Barry', title:'Casual slouch couture', price:2.99, tags:['soft','casual','cozy'], posts:7, rank:6, emoji:'🫘'},
+      {id:'rocker', name:'Grandpa Rocker', title:'Vintage rocker ASMR', price:3.99, tags:['vintage','wood','nostalgia'], posts:6, rank:7, emoji:'🪵'},
+      {id:'barstool', name:'Barstool Bella', title:'High-seat happy hours', price:3.49, tags:['bar','tall','steel'], posts:6, rank:9, emoji:'🍸'}
+    ];
+
+    const POSTS = Array.from({length:16}, (_,i)=>({ id: `p${i+1}`, emoji: i%3===0?'🪑': i%3===1?'✨':'📸', caption: ['New cushion drop','Lumbar reveal','Squeak test','360 spin','Armrest check'][i%5] }))
+
+    // --- Local state ---------------------------------------------------------
+    const $ = (q,root=document)=>root.querySelector(q);
+    const $$ = (q,root=document)=>Array.from(root.querySelectorAll(q));
+    const state = {
+      user: JSON.parse(localStorage.getItem('oc_user')||'null'),
+      subs: JSON.parse(localStorage.getItem('oc_subs')||'[]'),
+      theme: localStorage.getItem('oc_theme')||'dark'
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      applyTheme(state.theme);
+      renderHero();
+      renderCreators();
+      renderTrending();
+      attachUI();
+      updateAuthButtons();
+    });
+
+    function applyTheme(mode){
+      document.documentElement.dataset.theme = mode;
+      document.body.classList.toggle('light', mode==='light');
+      localStorage.setItem('oc_theme', mode);
+    }
+
+    function attachUI(){
+      $('#toggleTheme').addEventListener('click',()=>{
+        state.theme = state.theme==='dark' ? 'light' : 'dark';
+        applyTheme(state.theme);
+        $('#toggleTheme').setAttribute('aria-pressed', state.theme==='light');
+      });
+
+      $('#loginBtn').addEventListener('click',()=> authModal.showModal());
+      $('#signupBtn').addEventListener('click',()=> authModal.showModal());
+      $('#becomeCreator').addEventListener('click',()=>{
+        alert('Creator onboarding coming soon! (Parody site — nothing real here.)');
+      });
+
+      $('#authForm').addEventListener('submit', e=>{
+        e.preventDefault();
+        state.user = {name: $('#authName').value.trim() || 'Chair Fan', email: $('#authEmail').value.trim()};
+        localStorage.setItem('oc_user', JSON.stringify(state.user));
+        updateAuthButtons();
+        authModal.close();
+      });
+
+      $('#search').addEventListener('input', renderCreators);
+      $('#sort').addEventListener('change', renderCreators);
+      $('#exportBtn').addEventListener('click', exportData);
+    }
+
+    function updateAuthButtons(){
+      const loggedIn = !!state.user;
+      $('#loginBtn').style.display = loggedIn? 'none':'inline-flex';
+      $('#signupBtn').textContent = loggedIn ? (state.user.name||'Account') : 'Sign up';
+      $('#signupBtn').onclick = loggedIn ? ()=>{
+        if(confirm('Log out of OnlyChairs?')){
+          localStorage.removeItem('oc_user');
+          state.user = null; updateAuthButtons(); renderCreators();
+        }
+      } : ()=> authModal.showModal();
+    }
+
+    function renderHero(){
+      const chips = ['ergonomic','leather','mesh','stool','rocking','RGB','minimal','retro','budget','premium'];
+      $('#heroChips').innerHTML = chips.map(c=>`<button class="btn small ghost" onclick="filterTag('${c}')">#${c}</button>`).join('');
+      const grid = $('#trendingGrid');
+      grid.innerHTML = POSTS.slice(0,8).map(p=>`<div class="post" title="${p.caption}">${p.emoji}</div>`).join('');
+    }
+
+    function filterTag(tag){
+      $('#search').value = tag; renderCreators();
+      location.hash = '#discover';
+    }
+
+    function creatorCard(c){
+      const subscribed = state.subs.includes(c.id);
+      return `<article class="card" role="article" aria-labelledby="${c.id}-name">
+        <div class="thumb" role="img" aria-label="${c.name}">${c.emoji}</div>
+        <div class="body">
+          <div style="display:flex; align-items:center; justify-content:space-between">
+            <div>
+              <div id="${c.id}-name" style="font-weight:700">${c.name}</div>
+              <div class="meta">${c.title}</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-weight:700">$${c.price.toFixed(2)}/mo</div>
+              <div class="meta">${c.posts} posts</div>
+            </div>
+          </div>
+          <div class="tags">${c.tags.map(t=>`<span class="tag">#${t}</span>`).join('')}</div>
+          <div style="display:flex; gap:8px; margin-top:4px">
+            <button class="btn small ${subscribed?'success':''}" onclick="subscribe('${c.id}')">${subscribed?'Subscribed':'Subscribe'}</button>
+            <button class="btn small ghost" onclick="openCreator('${c.id}')">View</button>
+          </div>
+        </div>
+      </article>`
+    }
+
+    function renderCreators(){
+      const q = $('#search').value.toLowerCase();
+      const sort = $('#sort').value;
+      let list = CREATORS.filter(c => [c.name,c.title,...c.tags].join(' ').toLowerCase().includes(q));
+      if(sort==='popular') list = list.sort((a,b)=>a.rank-b.rank);
+      if(sort==='priceLow') list = list.sort((a,b)=>a.price-b.price);
+      if(sort==='priceHigh') list = list.sort((a,b)=>b.price-a.price);
+      if(sort==='new') list = list.sort((a,b)=>b.id.localeCompare(a.id));
+      $('#creatorGrid').innerHTML = list.map(creatorCard).join('') || `<div class='empty'>No chairs found. Try a different tag!</div>`;
+    }
+
+    function renderTrending(){
+      const hot = [...CREATORS].sort((a,b)=>a.rank-b.rank).slice(0,3);
+      $('#trendingCreators').innerHTML = hot.map(creatorCard).join('');
+    }
+
+    function subscribe(id){
+      if(!state.user){ authModal.showModal(); return; }
+      if(!state.subs.includes(id)) state.subs.push(id); else state.subs = state.subs.filter(x=>x!==id);
+      localStorage.setItem('oc_subs', JSON.stringify(state.subs));
+      renderCreators(); renderTrending();
+    }
+
+    function openCreator(id){
+      const c = CREATORS.find(x=>x.id===id);
+      const subscribed = state.subs.includes(id);
+      const posts = POSTS.slice(0,c.posts);
+      $('#creatorContent').innerHTML = `
+        <div style='display:flex; gap:14px; align-items:center'>
+          <div class='thumb' style='width:120px; border-radius:14px'>${c.emoji}</div>
+          <div>
+            <h3 style='margin:0'>${c.name}</h3>
+            <div class='meta'>${c.title} • $${c.price.toFixed(2)}/mo</div>
+            <div class='tags' style='margin-top:6px'>${c.tags.map(t=>`<span class="tag">#${t}</span>`).join('')}</div>
+          </div>
+          <div style='margin-left:auto; display:flex; gap:8px'>
+            <button class='btn small ${subscribed?'success':''}' onclick="subscribe('${c.id}')">${subscribed?'Subscribed':'Subscribe'}</button>
+          </div>
+        </div>
+        <div class='section'>
+          <h4 style='margin:0 0 8px'>Posts</h4>
+          <div class='grid'>${posts.map(p=>`<div class='post' title='${p.caption}'>${p.emoji}</div>`).join('')}</div>
+        </div>`;
+      creatorModal.showModal();
+    }
+
+    function exportData(e){
+      e.preventDefault();
+      const data = { user: state.user, subs: state.subs, timestamp: new Date().toISOString() };
+      const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'onlychairs-data.json'; a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+
+  <!-- README (inline for convenience) -->
+  <script>
+    console.log(`\n\n📄 OnlyChairs — GitHub Pages quickstart\n\n1) Create a repo named onlychairs (or anything).\n2) Add this index.html to the root (no build step needed).\n3) Commit & push.\n4) Settings → Pages → Deploy from branch → main, /root → Save.\n5) Share your Pages URL!\n\nCustomize: Edit the CREATORS array for names, prices, emojis, and tags.\n`);
+  </script>
+</body>
+</html>
